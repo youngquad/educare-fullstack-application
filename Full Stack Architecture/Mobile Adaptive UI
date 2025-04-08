@@ -1,0 +1,16 @@
+// mobile/components/RecommendationCard.js
+import { View, Text, Image } from 'react-native';
+import { useUserLearningStyle } from '../hooks/useAI';
+
+export default function RecommendationCard({ content }) {
+  const { learningStyle } = useUserLearningStyle();
+  
+  return (
+    <View style={styles[learningStyle]}>
+      <Image source={{ uri: content.image }} />
+      <Text>{content.title}</Text>
+      <MatchIndicator score={content.matchScore} />
+      {learningStyle === 'auditory' && <AudioPlayer url={content.audio} />}
+    </View>
+  );
+}
