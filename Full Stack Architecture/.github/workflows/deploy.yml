@@ -1,0 +1,15 @@
+name: Deploy Educare
+on: [push]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: docker-compose up -d --build
+      - run: |
+          docker exec backend npm test
+          docker exec frontend npm test
+      - uses: heroku/action@master
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          app_name: educare-app
