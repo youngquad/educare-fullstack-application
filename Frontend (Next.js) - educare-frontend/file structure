@@ -1,0 +1,12 @@
+educare-frontend/
+├── pages/
+│   ├── index.js
+│   ├── login.js
+│   └── dashboard.js
+├── components/
+│   ├── Navbar.js
+│   └── AuthForm.js
+├── styles/
+│   └── globals.css
+├── package.json
+└── next.config.js
